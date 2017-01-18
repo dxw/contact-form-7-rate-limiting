@@ -1,0 +1,21 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Dxw\\ContactForm7RateLimiting\\": "app/"
+    }
+  },
+  "scripts": {
+    "post-update-cmd": "vendor/bin/phar-install"
+  },
+  "require-dev": {
+    "peridot-php/peridot": "^1.18",
+    "peridot-php/leo": "^1.6",
+    "peridot-php/peridot-dot-reporter": "^1.0",
+    "dxw/phar-install": "^1.0",
+    "10up/wp_mock": "^0.1.1",
+    "friendsofphp/php-cs-fixer": "1.11.4"
+  },
+  "require": {
+    "dxw/iguana": "^1.1"
+  }
+}
