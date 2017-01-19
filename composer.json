@@ -14,7 +14,8 @@
     "dxw/phar-install": "^1.0",
     "10up/wp_mock": "^0.1.1",
     "friendsofphp/php-cs-fixer": "1.11.4",
-    "mikey179/vfsStream": "^1.6"
+    "mikey179/vfsStream": "^1.6",
+    "php-mock/php-mock-mockery": "^1.1"
   },
   "require": {
     "dxw/iguana": "^1.1"
