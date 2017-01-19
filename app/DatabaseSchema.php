@@ -23,10 +23,11 @@ class DatabaseSchema implements \Dxw\Iguana\Registerable
         // source = 0000:0000:0000:0000:0000:0000:0000:0000/128 = 43 bytes
         dbDelta("
         CREATE TABLE {$this->wpdb->prefix}cf7_rate_limiting (
-            id mediumint(9) NOT NULL AUTO_INCREMENT,
-            timestamp varchar(23),
-            source varchar(43),
-        )
+            id INT NOT NULL AUTO_INCREMENT,
+            timestamp VARCHAR(23),
+            source VARCHAR(43),
+            PRIMARY KEY (id)
+        ) {$this->wpdb->get_charset_collate()};
         ");
     }
 }

@@ -5,7 +5,9 @@ describe(\Dxw\ContactForm7RateLimiting\DatabaseSchema::class, function () {
         \WP_Mock::setUp();
 
         $this->abspath = \org\bovigo\vfs\vfsStream::setup()->url();
-        $this->wpdb = \Mockery::mock(\wpdb::class);
+        $this->wpdb = \Mockery::mock(\wpdb::class, function ($mock) {
+            $mock->shouldReceive('get_charset_collate');
+        });
         $this->wpdb->prefix = 'wp_';
         $this->databaseSchema = new \Dxw\ContactForm7RateLimiting\DatabaseSchema($this->abspath, $this->wpdb);
     });
