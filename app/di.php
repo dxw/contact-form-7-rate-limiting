@@ -10,3 +10,8 @@ $registrar->addInstance(new \Dxw\ContactForm7RateLimiting\DatabaseWriter(
     $registrar->getInstance(\Dxw\ContactForm7RateLimiting\IP::class),
     $registrar->getInstance($GLOBALS['wpdb'])
 ));
+$registrar->addInstance(new \Dxw\ContactForm7RateLimiting\DatabaseReader(
+    $registrar->getInstance(\Dxw\ContactForm7RateLimiting\Time::class),
+    $registrar->getInstance(\Dxw\ContactForm7RateLimiting\IP::class),
+    $registrar->getInstance($GLOBALS['wpdb'])
+));
