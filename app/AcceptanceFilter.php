@@ -20,10 +20,10 @@ class AcceptanceFilter implements \Dxw\Iguana\Registerable
     public function filter()
     {
         if ($this->databaseReader->recentSubmissions(300) >= 5) {
-            return false;
+            return true;
         }
 
         $this->databaseWriter->recordSubmission();
-        return true;
+        return false;
     }
 }

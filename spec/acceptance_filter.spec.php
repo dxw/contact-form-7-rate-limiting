@@ -38,8 +38,8 @@ describe(\Dxw\ContactForm7RateLimiting\AcceptanceFilter::class, function () {
                 $this->databaseReader->shouldReceive('recentSubmissions')->with(300)->andReturn(5);
             });
 
-            it('does not record submission, and returns false', function () {
-                expect($this->acceptanceFilter->filter())->to->equal(false);
+            it('does not record submission, and returns true', function () {
+                expect($this->acceptanceFilter->filter())->to->equal(true);
             });
         });
 
@@ -49,8 +49,8 @@ describe(\Dxw\ContactForm7RateLimiting\AcceptanceFilter::class, function () {
                 $this->databaseReader->shouldReceive('recentSubmissions')->with(300)->andReturn(4);
             });
 
-            it('records submission and returns true', function () {
-                expect($this->acceptanceFilter->filter())->to->equal(true);
+            it('records submission and returns false', function () {
+                expect($this->acceptanceFilter->filter())->to->equal(false);
             });
         });
     });
