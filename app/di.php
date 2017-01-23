@@ -22,3 +22,7 @@ $registrar->addInstance(new \Dxw\ContactForm7RateLimiting\AcceptanceFilter(
     $registrar->getInstance(\Dxw\ContactForm7RateLimiting\DatabaseWriter::class),
     $registrar->getInstance(\Dxw\ContactForm7RateLimiting\DatabaseReader::class)
 ));
+$registrar->addInstance(new \Dxw\ContactForm7RateLimiting\RecordPurger(
+    $GLOBALS['wpdb'],
+    $registrar->getInstance(\Dxw\ContactForm7RateLimiting\Time::class)
+));
