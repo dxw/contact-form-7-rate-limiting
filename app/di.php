@@ -15,3 +15,7 @@ $registrar->addInstance(new \Dxw\ContactForm7RateLimiting\DatabaseReader(
     $registrar->getInstance(\Dxw\ContactForm7RateLimiting\IP::class),
     $registrar->getInstance($GLOBALS['wpdb'])
 ));
+$registrar->addInstance(new \Dxw\ContactForm7RateLimiting\AcceptanceFilter(
+    $registrar->getInstance(\Dxw\ContactForm7RateLimiting\DatabaseWriter::class),
+    $registrar->getInstance(\Dxw\ContactForm7RateLimiting\DatabaseReader::class)
+));
