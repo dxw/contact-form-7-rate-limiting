@@ -6,7 +6,7 @@ class Time
 {
     public function now()
     {
-        return $this->getTimestamp(time());
+        return $this->secondsAgo(0);
     }
 
     public function secondsAgo(int $seconds)
