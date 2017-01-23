@@ -17,8 +17,12 @@ class AcceptanceFilter implements \Dxw\Iguana\Registerable
         add_filter('wpcf7_spam', [$this, 'filter']);
     }
 
-    public function filter()
+    public function filter(bool $isSpam)
     {
+        if ($isSpam) {
+            return true;
+        }
+
         if ($this->databaseReader->recentSubmissions(300) >= 5) {
             return true;
         }

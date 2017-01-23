@@ -39,18 +39,27 @@ describe(\Dxw\ContactForm7RateLimiting\AcceptanceFilter::class, function () {
             });
 
             it('does not record submission, and returns true', function () {
-                expect($this->acceptanceFilter->filter())->to->equal(true);
+                expect($this->acceptanceFilter->filter(false))->to->equal(true);
             });
         });
 
         context('when NOT too many recent submissions', function () {
             beforeEach(function () {
-                $this->databaseWriter->shouldReceive('recordSubmission')->with()->once();
                 $this->databaseReader->shouldReceive('recentSubmissions')->with(300)->andReturn(4);
             });
 
-            it('records submission and returns false', function () {
-                expect($this->acceptanceFilter->filter())->to->equal(false);
+            context('when filterable value is true', function () {
+                it('does not record submission, and returns true', function () {
+                    $this->databaseWriter->shouldReceive('recordSubmission')->never();
+                    expect($this->acceptanceFilter->filter(true))->to->equal(true);
+                });
+            });
+
+            context('when filterable value is false', function () {
+                it('records submission and returns false', function () {
+                    $this->databaseWriter->shouldReceive('recordSubmission')->with()->once();
+                    expect($this->acceptanceFilter->filter(false))->to->equal(false);
+                });
             });
         });
     });
