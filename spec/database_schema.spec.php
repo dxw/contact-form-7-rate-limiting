@@ -21,14 +21,14 @@ describe(\Dxw\ContactForm7RateLimiting\DatabaseSchema::class, function () {
     });
 
     describe('->register()', function () {
-        it('registers admin_init hook', function () {
-            \WP_Mock::expectActionAdded('admin_init', [$this->databaseSchema, 'adminInit']);
+        it('registers init hook', function () {
+            \WP_Mock::expectActionAdded('init', [$this->databaseSchema, 'init']);
 
             $this->databaseSchema->register();
         });
     });
 
-    describe('->adminInit()', function () {
+    describe('->init()', function () {
         beforeEach(function () {
             mkdir($this->abspath.'/wp-admin');
             mkdir($this->abspath.'/wp-admin/includes');
@@ -54,7 +54,7 @@ describe(\Dxw\ContactForm7RateLimiting\DatabaseSchema::class, function () {
                     'times' => 1,
                 ]);
 
-                $this->databaseSchema->adminInit();
+                $this->databaseSchema->init();
                 expect($GLOBALS['has been included'])->to->be->true();
             });
         });
@@ -73,7 +73,7 @@ describe(\Dxw\ContactForm7RateLimiting\DatabaseSchema::class, function () {
                     'times' => 0,
                 ]);
 
-                $this->databaseSchema->adminInit();
+                $this->databaseSchema->init();
                 expect($GLOBALS['has been included'])->to->be->false();
             });
         });

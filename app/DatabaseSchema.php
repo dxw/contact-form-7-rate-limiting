@@ -12,10 +12,10 @@ class DatabaseSchema implements \Dxw\Iguana\Registerable
 
     public function register()
     {
-        add_action('admin_init', [$this, 'adminInit']);
+        add_action('init', [$this, 'init']);
     }
 
-    public function adminInit()
+    public function init()
     {
         $version = (int)get_option('cf7_rate_limiting_version');
         if ($version < 1) {
